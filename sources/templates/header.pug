@@ -1,0 +1,39 @@
+mixin header()
+    header.page_header
+        .wrapper.container
+            .header_logo
+                a(href="index.html")
+                    img(src="assets/images/iconmonstr-wrench-8.svg", alt="Все для дома и ремонта")
+                    span Все для дома и ремонта
+            nav.header_navigation.container
+                .nav-list_collapse
+                    +button({tag: "button", type: "button", id: "toggleCollapse", title: "Меню <span></span>"})
+
+                ul.nav-list.container
+                    li.nav-list_item
+                        button.link(type="button", id="toggleCatalogue") Каталог
+                            span.caret
+                        ul.nav-list_sublist
+                            - var catalogueArray = []
+                            - catalogueArray.push({title: "Сантехника", url: "#"})
+                            - catalogueArray.push({title: "Строительные материалы", url: "#"})
+                            - catalogueArray.push({title: "Электрика", url: "#"})
+                            - catalogueArray.push({title: "Инструменты", url: "#"})
+                            - catalogueArray.push({title: "Метизы", url: "#"})
+                            - catalogueArray.push({title: "Замки и петли", url: "#"})
+                            for item in catalogueArray
+                                li.nav-list_subitem
+                                    a(href=item.url) #{item.title}
+                                        span.arrow-left
+                    - var navigationArray = []
+                    - navigationArray.push({title: "О нас", url: "#"})
+                    - navigationArray.push({title: "Акции", url: "#"})
+                    - navigationArray.push({title: "Доставка", url: "#"})
+                    - navigationArray.push({title: "Контакты", url: "#"})
+                    for item in navigationArray
+                        li.nav-list_item
+                            a(href=item.url) #{item.title}
+                .nav-basket
+                    a(href="#") Корзина
+                        img(src='assets/images/iconmonstr-shopping-bag-2.svg')
+                        span.current 3

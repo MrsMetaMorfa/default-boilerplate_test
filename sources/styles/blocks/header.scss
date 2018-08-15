@@ -1,0 +1,220 @@
+.page_header {
+  background: $colorContrastLight;
+  padding-top: 40px;
+  .container {
+    height: 55px;
+    justify-content: space-between;
+    position: relative;
+  }
+}
+.header {
+  &_logo{
+    width: 190px;
+    a {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      position: relative;
+      @include linkHovered($colorContrastDark);
+      img {
+        height: 100%;
+        width: 50px;
+      }
+      span {
+        display: inline-block;
+        width: 120px;
+        padding-top: 5px;
+      }
+    }
+  }
+  &_navigation {
+    z-index: 1000;
+    ul {
+      margin: 0;
+      padding: 0;
+      font-size: 18px;
+      li {
+        position: relative;
+        white-space: nowrap;
+      }
+      li a, li button {
+        width: 100%;
+        height: 100%;
+        padding: 0 20px;
+        line-height: 55px;
+        position: relative;
+        @include linkHovered($colorContrastDark);
+      }
+
+      .nav-list_sublist {
+        position: absolute;
+        top: 55px;
+        background: $colorBasicLight;
+        display: none;
+        z-index: 1100;
+        li {
+          height: 0;
+          background: $colorBasicLight;
+          transition: height 1s ease-in-out;
+          &:not(:last-of-type) {
+            border-bottom: 1px solid $colorBackgroundLight;
+          }
+          a {
+            height: 0;
+            background: $colorBasicLight;
+            transition: height 1s ease-in-out;
+          }
+        }
+      }
+      .nav-list_item {
+        button {
+          display: flex;
+          .caret {
+            display: inline-block;
+            margin: auto 0 auto 8px;
+            width: 15px;
+            height: 12px;
+            position: relative;
+            &:after {
+              content: "";
+              display: block;
+              width: 8px;
+              height: 8px;
+              border-width: 0 1px 1px 0;
+              border-color: $colorBasicDark;
+              border-style: solid;
+              transform: rotate(45deg);
+              position: absolute;
+              top: 0;
+              left: 0;
+              transition: transform .2s ease-in-out;
+            }
+          }
+          &:hover .caret:after {
+            animation: bounce 2s ease-in-out infinite;
+          }
+        }
+        &.active {
+          button .caret:after {
+            transform: rotate( -135deg);
+            top: 5px;
+            transition: transform .2s ease-in-out, top .2s ease-in-out;
+          }
+          .nav-list_sublist {
+            display: block;
+            li, li a {
+              height: 55px;
+              transition: height 1s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+    .nav-basket {
+      margin: auto 0;
+      margin-left: 15px;
+      a {
+        font-size: 0;
+        padding: 5px;
+        padding-right: 8px;
+        position: relative;
+        display: flex;
+        img {
+          height: 30px;
+        }
+        span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: $colorContrastDark;
+          font-size: 12px;
+          line-height: 20px;
+          text-align: center;
+          color: $colorBasicLight;
+        }
+      }
+    }
+  }
+}
+.nav-list_collapse {
+  display: none;
+  padding: 0 20px;
+  button {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    height: 55px;
+    line-height: 0;
+    font-size: 0;
+    width: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    &:before, &:after{
+      content: '';
+    }
+    span, &:before, &:after {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: $colorBasicDark;
+      margin: 5px 0;
+      position: relative;
+    }
+    &:hover, &:focus {
+      background: transparent;
+    }
+  }
+  &.active button {
+    background: transparent;
+    span {
+      width: 0;
+      margin: 0;
+    }
+    &:before, &:after {
+      margin: 0;
+      width: 60%;
+      transition: transform 0.2s ease-in-out;
+    }
+    &:before {
+      transform: rotate(45deg) translateY(1px);
+      transition: transform 0.4s ease-in-out;
+
+    }
+    &:after {
+      transform: rotate(-45deg) translateY(-1px);
+      transition: transform 0.4s ease-in-out;
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .nav-list_collapse {
+    display: block;
+  }
+  .nav-list {
+    display: none;
+    &.active {
+      top: 55px;
+      right: 36px;
+      background: $colorBasicLight;
+      display: block;
+      position: absolute;
+      height: auto;
+      .nav-list_sublist {
+        right: 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 675px) {
+  .nav-list_collapse button {
+    width: 40px;
+  }
+}

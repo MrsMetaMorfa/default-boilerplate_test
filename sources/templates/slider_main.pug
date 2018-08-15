@@ -1,0 +1,20 @@
+include button
+
+mixin slider(array)
+    .swiper-container
+        .swiper-btn.next
+            .arrow.arrow-right
+        .swiper-btn.prev
+            .arrow.arrow-left
+        .swiper-wrapper
+            for slide in array
+                .swiper-slide
+                    .swiper-slide_inner
+                        h2.swiper-slide_title #{slide.title}
+                        p.swiper-slide_subtitle #{slide.subtitle}
+                        .swiper-slide_price
+                            span #{slide.price} руб.
+                            +button({class: "inverted small", tag: "link", url: "#", title: "Купить"})
+                    .swiper-slide_image
+                        img(src=slide.image, alt=slide.title)
+

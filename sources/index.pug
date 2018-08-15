@@ -1,0 +1,67 @@
+extends templates/layout/main.pug
+include templates/header
+include templates/button
+include templates/slider_main
+
+block title
+    title Все для дома и ремонта | Главная
+
+block pagecontent
+
+    +header
+
+    section.page_main.colored
+        .wrapper.container
+            .section_inner-left
+                h1.page_title Все для ремонта
+                ul.main_list
+                    li.main_list-item 12 000 товаров в каталоге
+                    li.main_list-item Бесплатная доставка по Москве
+                +button({tag: "link",title: "Перейти в каталог", url: "#"})
+
+            .section_inner-right
+                -var sliderArray = []
+                -sliderArray.push({title: "Водонагреватель", subtitle: "Накопительный Ariston, 80л.", price: "9 840", image: "assets/images/first.png"})
+                -sliderArray.push({title: "Водонагреватель", subtitle: "Накопительный Ariston, 60л.", price: "9 480", image: "assets/images/second.png"})
+                +slider(sliderArray)
+
+    section.page_catalogue
+        .wrapper
+            h2.section_title Категории товаров
+            .container
+                - var categoriesArray = []
+                - categoriesArray.push({class: "bolder-width", title: "Сантехника", image: "assets/images/tubes.png", url: "#"})
+                - categoriesArray.push({class: "narrow-width", title: "Строительные материалы", image: "assets/images/stroika.png", url: "#"})
+                - categoriesArray.push({class: "narrow-width", title: "Электрика", image: "assets/images/eletrika.png", url: "#"})
+                - categoriesArray.push({class: "double-height", title: "Инструмент", image: "assets/images/pic_cat_instrument.png", url: "#"})
+                - categoriesArray.push({class: " ", title: "Метизы", image: "assets/images/metizy-300x300.png", url: "#"})
+                - categoriesArray.push({class: " ", title: "Замки и петли", image: "assets/images/petli.png", url: "#"})
+                - var i = 0
+                .catalogue_wrapper
+                    .catalogue_item(class=categoriesArray[i].class)
+                        a(href=categoriesArray[i].url)
+                            img(src=categoriesArray[i].image, alt=categoriesArray[i].title)
+                            span #{categoriesArray[i].title}
+                                span.arrow.arrow-left
+                    - i++
+                    while i < 3
+                        .catalogue_item(class=categoriesArray[i].class)
+                            a(href=categoriesArray[i].url)
+                                img(src=categoriesArray[i].image, alt=categoriesArray[i].title)
+                                span #{categoriesArray[i].title}
+                                    span.arrow.arrow-left
+                        - i++
+                .catalogue_wrapper.container--vertical
+                    - i = 3
+                    while i < categoriesArray.length
+                        .catalogue_item(class=categoriesArray[i].class)
+                            a(href=categoriesArray[i].url)
+                                img(src=categoriesArray[i].image, alt=categoriesArray[i].title)
+                                span #{categoriesArray[i].title}
+                                    span.arrow.arrow-left
+                        - i++
+
+
+    script(src='scripts/libs/jquery-3.2.1.min.js')
+    script(src='scripts/libs/swiper.min.js')
+    script(src='scripts/common.js')

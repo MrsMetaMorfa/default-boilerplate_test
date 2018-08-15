@@ -1,0 +1,31 @@
+.button {
+  a, button {
+    border: 2px solid $colorContrastDark;
+    border-radius: 30px;
+    display: inline-block;
+    line-height: 60px;
+    padding: 0 50px;
+    font-weight: 400;
+    &:hover, &:focus {
+      background: $colorContrastDark;
+      color: $colorBasicLight;
+    }
+  }
+  &.inverted {
+    a, button {
+      background: $colorContrastDark;
+      color: $colorBasicLight;
+      &:hover, &:focus {
+        background: transparent;
+        color: $colorBasicDark;
+      }
+    }
+  }
+  &.small {
+    a, button {
+      line-height: 41px;
+      padding: 0 38px;
+      font-weight: 400;
+    }
+  }
+}

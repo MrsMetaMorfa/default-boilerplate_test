@@ -1,0 +1,56 @@
+//базовые стили для страниц
+* {
+  box-sizing: border-box;
+  transition: .2s ease-in-out;
+  &:hover, &:focus, &:active {
+    outline: none;
+  }
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  height: auto;
+  font-family: "Verdana", sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: $colorBasicDark;
+  background: $colorBackgroundLight;
+  overflow-x: hidden;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+button {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style-type: none;
+}
+h1,h2,h3,h4,h5,h6 {
+  text-transform: uppercase;
+}
+
+.wrapper {
+  width: 96%;
+  margin: 0 auto;
+  max-width: 1180px;
+}
+.container {
+  display: flex;
+  &--vertical {
+    flex-direction: column;
+  }
+}

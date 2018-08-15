@@ -1,0 +1,6 @@
+mixin button(properties)
+    .button(class=properties.class)
+        if (properties.tag == "button")
+            button(type=properties.type, id=properties.id) !{properties.title}
+        if (properties.tag == "link")
+            a(href=properties.url) !{properties.title}
